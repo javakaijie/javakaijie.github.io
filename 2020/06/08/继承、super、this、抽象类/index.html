@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>继承、super、this、抽象类 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初学者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="java基础–继承、super、this、抽象类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="继承、super、this、抽象类">
+<meta property="og:url" content="http://yoursite.com/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="初学者">
+<meta property="og:description" content="java基础–继承、super、this、抽象类">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s1.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s2.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s3.png">
+<meta property="article:published_time" content="2020-06-08T07:11:19.672Z">
+<meta property="article:modified_time" content="2020-06-08T16:49:29.366Z">
 <meta property="article:author" content="JavaLearner">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -130,37 +136,154 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-继承、super、this、抽象类" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      继承、super、this、抽象类
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="archive-article-date">
+
+        
+        <a href="/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="archive-article-date">
   	<time datetime="2020-06-08T07:11:19.672Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/">继承、super、this、抽象类</a>
-    </h1>
-  
+        
+      </header>
+    
+	<!-- 目录内容 -->
+	
+	    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+	          <span class="btn-bg"></span>
+	          <span class="btn-text">文章导航</span>
+	          </p>
+		<div id="toc-article" class="toc-article">
+		    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+			<strong class="toc-title">文章目录</strong>
+	           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-number">1.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#继承的格式"><span class="toc-number">1.1.</span> <span class="toc-text">继承的格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承后的特点——成员变量"><span class="toc-number">1.2.</span> <span class="toc-text">继承后的特点——成员变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#成员变量重名"><span class="toc-number">1.3.</span> <span class="toc-text">成员变量重名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重写"><span class="toc-number">1.4.</span> <span class="toc-text">重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承后的特点——构造方法"><span class="toc-number">1.5.</span> <span class="toc-text">继承后的特点——构造方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super关键字的用法"><span class="toc-number">2.</span> <span class="toc-text">super关键字的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this关键字的用法"><span class="toc-number">3.</span> <span class="toc-text">this关键字的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super与this的关键图解"><span class="toc-number">4.</span> <span class="toc-text">super与this的关键图解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象类"><span class="toc-number">5.</span> <span class="toc-text">抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何使用抽象类和抽象方法："><span class="toc-number">5.1.</span> <span class="toc-text">如何使用抽象类和抽象方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项"><span class="toc-number">5.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol>
+	         </div>
+	   <script type="text/javascript">
+		function showToc(){
+			var toc_article = document.getElementById("toc-article");
+			var show_toc_btn = document.getElementById("show-toc-btn");
+			toc_article.setAttribute("style","display:block");
+			show_toc_btn.setAttribute("style","display:none");
+			};
+		function showBtn(){
+			var toc_article = document.getElementById("toc-article");
+			var show_toc_btn = document.getElementById("show-toc-btn");
+			toc_article.setAttribute("style","display:none");
+			show_toc_btn.setAttribute("style","display:block");
+			};
+	   </script>
+	      
+	<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java基础–继承、super、this、抽象类</p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
-          
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a><strong>继承</strong></h3><p>多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要 </p>
+<p>继承那一个类即可</p>
+<h4 id="继承的格式"><a href="#继承的格式" class="headerlink" title="继承的格式"></a>继承的格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class 父类 &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 子类 extends 父类 &#123;</span><br><span class="line">... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="继承后的特点——成员变量"><a href="#继承后的特点——成员变量" class="headerlink" title="继承后的特点——成员变量"></a>继承后的特点——成员变量</h4><p>在父子类的继承关系当中，如果成员变量重名，则创建子类对象时，访问有两种方式：<br>直接通过子类对象访问成员变量：<br>等号左边是谁，就优先用谁，没有则向上找。<br>间接通过成员方法访问成员变量：<br>该方法属于谁，就优先用谁，没有则向上找。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">        Fu fu &#x3D; new Fu(); &#x2F;&#x2F; 创建父类对象</span><br><span class="line">        System.out.println(fu.numFu); &#x2F;&#x2F; 只能使用父类的东西，没有任何子类内容</span><br><span class="line">        System.out.println(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);</span><br><span class="line"></span><br><span class="line">        Zi zi &#x3D; new Zi();</span><br><span class="line"></span><br><span class="line">        System.out.println(zi.numFu); &#x2F;&#x2F; 10</span><br><span class="line">        System.out.println(zi.numZi); &#x2F;&#x2F; 20</span><br><span class="line">        System.out.println(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 等号左边是谁，就优先用谁</span><br><span class="line">        System.out.println(zi.num); &#x2F;&#x2F; 优先子类，200</span><br><span class="line">&#x2F;&#x2F;        System.out.println(zi.abc); &#x2F;&#x2F; 到处都没有，编译报错！</span><br><span class="line">        System.out.println(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 这个方法是子类的，优先用子类的，没有再向上找</span><br><span class="line">        zi.methodZi(); &#x2F;&#x2F; 200</span><br><span class="line">        &#x2F;&#x2F; 这个方法是在父类当中定义的，</span><br><span class="line">        zi.methodFu(); &#x2F;&#x2F; 100</span><br></pre></td></tr></table></figure>
+
+<h4 id="成员变量重名"><a href="#成员变量重名" class="headerlink" title="成员变量重名"></a><strong>成员变量重名</strong></h4><p>局部变量：         直接写成员变量名<br>本类的成员变量：    this.成员变量名<br>父类的成员变量：    super.成员变量名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Zi extends Fu &#123;</span><br><span class="line"></span><br><span class="line">    int num &#x3D; 20;</span><br><span class="line"></span><br><span class="line">    public void method() &#123;</span><br><span class="line">        int num &#x3D; 30;</span><br><span class="line">        System.out.println(num); &#x2F;&#x2F; 30，局部变量</span><br><span class="line">        System.out.println(this.num); &#x2F;&#x2F; 20，本类的成员变量</span><br><span class="line">        System.out.println(super.num); &#x2F;&#x2F; 10，父类的成员变量</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><ol>
+<li><p>必须保证父子类之间方法的名称相同，参数列表也相同。<br>@Override：写在方法前面，用来检测是不是有效的正确覆盖重写。<br>这个注解就算不写，只要满足要求，也是正确的方法覆盖重写。</p>
+</li>
+<li><p>子类方法的返回值必须【小于等于】父类方法的返回值范围。<br>小扩展提示：java.lang.Object类是所有类的公共最高父类（祖宗类），java.lang.String就是Object的子类。</p>
+</li>
+<li><p>子类方法的权限必须【大于等于】父类方法的权限修饰符。<br>小扩展提示：public &gt; protected &gt; (default) &gt; private<br>备注：(default)不是关键字default，而是什么都不写，留空。</p>
+</li>
+</ol>
+<h4 id="继承后的特点——构造方法"><a href="#继承后的特点——构造方法" class="headerlink" title="继承后的特点——构造方法"></a>继承后的特点——构造方法</h4><ol>
+<li>子类构造方法当中有一个默认隐含的“super()”调用，所以一定是先调用的父类构造，后执行的子类构造。</li>
+<li>子类构造可以通过super关键字来调用父类重载构造。</li>
+<li>super的父类构造调用，必须是子类构造方法的第一个语句。不能一个子类构造调用多次super构造。<br>总结：<br>子类必须调用父类构造方法，不写则赠送super()；写了则用写的指定的super调用，super只能有一个，还必须是第一个。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Fu &#123;</span><br><span class="line"></span><br><span class="line">    public Fu() &#123;</span><br><span class="line">        System.out.println(&quot;父类无参构造&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Fu(int num) &#123;</span><br><span class="line">        System.out.println(&quot;父类有参构造！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Zi extends Fu &#123;</span><br><span class="line"></span><br><span class="line">    public Zi() &#123;</span><br><span class="line">        super(); &#x2F;&#x2F; 在调用父类无参构造方法</span><br><span class="line">&#x2F;&#x2F;        super(20); &#x2F;&#x2F; 在调用父类重载的构造方法</span><br><span class="line">        System.out.println(&quot;子类构造方法！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void method() &#123;</span><br><span class="line">&#x2F;&#x2F;        super(); &#x2F;&#x2F; 错误写法！只有子类构造方法，才能调用父类构造方法。</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Demo01Constructor &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Zi zi &#x3D; new Zi();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s1.png" alt="s1"></p>
+<h3 id="super关键字的用法"><a href="#super关键字的用法" class="headerlink" title="super关键字的用法"></a>super关键字的用法</h3><ol>
+<li>在子类的成员方法中，访问父类的成员变量。</li>
+<li>在子类的成员方法中，访问父类的成员方法。</li>
+<li>在子类的构造方法中，访问父类的构造方法。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class Fu &#123;</span><br><span class="line"></span><br><span class="line">    int num &#x3D; 10;</span><br><span class="line"></span><br><span class="line">    public void method() &#123;</span><br><span class="line">        System.out.println(&quot;父类方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Zi extends Fu &#123;</span><br><span class="line"></span><br><span class="line">    int num &#x3D; 20;</span><br><span class="line"></span><br><span class="line">    public Zi() &#123;</span><br><span class="line">        super();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void methodZi() &#123;</span><br><span class="line">        System.out.println(super.num); &#x2F;&#x2F; 父类中的num</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void method() &#123;</span><br><span class="line">        super.method(); &#x2F;&#x2F; 访问父类中的method</span><br><span class="line">        System.out.println(&quot;子类方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="this关键字的用法"><a href="#this关键字的用法" class="headerlink" title="this关键字的用法"></a>this关键字的用法</h3><ol>
+<li>在本类的成员方法中，访问本类的成员变量。</li>
+<li>在本类的成员方法中，访问本类的另一个成员方法。</li>
+<li>在本类的构造方法中，访问本类的另一个构造方法。<br>在第三种用法当中要注意：<br>A. this(…)调用也必须是构造方法的第一个语句，唯一一个。<br>B. super和this两种构造调用，不能同时使用。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class Fu &#123;</span><br><span class="line"></span><br><span class="line">    int num &#x3D; 30;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Zi extends Fu &#123;</span><br><span class="line"></span><br><span class="line">    int num &#x3D; 20;</span><br><span class="line"></span><br><span class="line">    public Zi() &#123;</span><br><span class="line">&#x2F;&#x2F;        super(); &#x2F;&#x2F; 这一行不再赠送</span><br><span class="line">        this(123); &#x2F;&#x2F; 本类的无参构造，调用本类的有参构造</span><br><span class="line">&#x2F;&#x2F;        this(1, 2); &#x2F;&#x2F; 错误写法！</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Zi(int n) &#123;</span><br><span class="line">        this(1, 2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Zi(int n, int m) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void showNum() &#123;</span><br><span class="line">        int num &#x3D; 10;</span><br><span class="line">        System.out.println(num); &#x2F;&#x2F; 局部变量</span><br><span class="line">        System.out.println(this.num); &#x2F;&#x2F; 本类中的成员变量</span><br><span class="line">        System.out.println(super.num); &#x2F;&#x2F; 父类中的成员变量</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void methodA() &#123;</span><br><span class="line">        System.out.println(&quot;AAA&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void methodB() &#123;</span><br><span class="line">        this.methodA();</span><br><span class="line">        System.out.println(&quot;BBB&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="super与this的关键图解"><a href="#super与this的关键图解" class="headerlink" title="super与this的关键图解"></a>super与this的关键图解</h3><p><img src="/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s2.png" alt="s2"></p>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a><strong>抽象类</strong></h3><p>抽象方法：就是加上abstract关键字，然后去掉大括号，直接分号结束。<br>抽象类：抽象方法所在的类，必须是抽象类才行。在class之前写上abstract即可。</p>
+<h4 id="如何使用抽象类和抽象方法："><a href="#如何使用抽象类和抽象方法：" class="headerlink" title="如何使用抽象类和抽象方法："></a>如何使用抽象类和抽象方法：</h4><ol>
+<li>不能直接创建new抽象类对象。</li>
+<li>必须用一个子类来继承抽象父类。</li>
+<li>子类必须覆盖重写抽象父类当中所有的抽象方法。<br>覆盖重写（实现）：子类去掉抽象方法的abstract关键字，然后补上方法体大括号。</li>
+<li>创建子类对象进行使用。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Animal &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 这是一个抽象方法，代表吃东西，但是具体吃什么（大括号的内容）不确定。</span><br><span class="line">    public abstract void eat();</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 这是普通的成员方法</span><br><span class="line">&#x2F;&#x2F;    public void normalMethod() &#123;</span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F;    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Cat extends Animal &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line">        System.out.println(&quot;猫吃鱼&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DemoMain &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">&#x2F;&#x2F;        Animal animal &#x3D; new Animal(); &#x2F;&#x2F; 错误写法！不能直接创建抽象类对象</span><br><span class="line"></span><br><span class="line">        Cat cat &#x3D; new Cat();</span><br><span class="line">        cat.eat();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出   猫吃鱼</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h4><ol>
+<li><p>抽象类<strong>不能创建对象</strong>，如果创建，编译无法通过而报错。只能创建其非抽象子类的对象。</p>
+</li>
+<li><p>抽象类中，可以有构造方法，是供子类创建对象时，初始化父类成员使用的</p>
+</li>
+<li><p>抽象类中，不一定包含抽象方法，但是有抽象方法的类必定是抽象类。 </p>
+</li>
+<li><p>抽象类的子类，必须重写抽象父类中<strong>所有的</strong>抽象方法，否则，编译无法通过而报错。除非该子类也是抽象 </p>
+</li>
+</ol>
+<p>类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 最高的抽象父类</span><br><span class="line">public abstract class Animal &#123;</span><br><span class="line"></span><br><span class="line">    public abstract void eat();</span><br><span class="line"></span><br><span class="line">    public abstract void sleep();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 子类也是一个抽象类</span><br><span class="line">public abstract class Dog extends Animal &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line">        System.out.println(&quot;狗吃骨头&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; public abstract void sleep();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Dog2Ha extends Dog &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void sleep() &#123;</span><br><span class="line">        System.out.println(&quot;嘿嘿嘿……&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DogGolden extends Dog &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DemoMain &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">&#x2F;&#x2F;        Animal animal &#x3D; new Animal(); &#x2F;&#x2F; 错误！</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;        Dog dog &#x3D; new Dog(); &#x2F;&#x2F; 错误，这也是抽象类</span><br><span class="line"></span><br><span class="line">        Dog2Ha ha &#x3D; new Dog2Ha(); &#x2F;&#x2F; 这是普通类，可以直接new对象。</span><br><span class="line">        ha.eat();</span><br><span class="line">        ha.sleep();</span><br><span class="line">        System.out.println(&quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;);</span><br><span class="line"></span><br><span class="line">        DogGolden golden &#x3D; new DogGolden();</span><br><span class="line">        golden.eat();</span><br><span class="line">        golden.sleep();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/s3.png" alt="s3"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -173,131 +296,117 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/08/%E7%BB%A7%E6%89%BF%E3%80%81super%E3%80%81this%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/06/%E5%B8%B8%E7%94%A8API/" class="archive-article-date">
-  	<time datetime="2020-06-06T05:01:02.785Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/06/%E5%B8%B8%E7%94%A8API/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常用API</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/06/%E5%B8%B8%E7%94%A8API/">常用API</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-number">1.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#继承的格式"><span class="toc-number">1.1.</span> <span class="toc-text">继承的格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承后的特点——成员变量"><span class="toc-number">1.2.</span> <span class="toc-text">继承后的特点——成员变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#成员变量重名"><span class="toc-number">1.3.</span> <span class="toc-text">成员变量重名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重写"><span class="toc-number">1.4.</span> <span class="toc-text">重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承后的特点——构造方法"><span class="toc-number">1.5.</span> <span class="toc-text">继承后的特点——构造方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super关键字的用法"><span class="toc-number">2.</span> <span class="toc-text">super关键字的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this关键字的用法"><span class="toc-number">3.</span> <span class="toc-text">this关键字的用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#super与this的关键图解"><span class="toc-number">4.</span> <span class="toc-text">super与this的关键图解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象类"><span class="toc-number">5.</span> <span class="toc-text">抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何使用抽象类和抽象方法："><span class="toc-number">5.1.</span> <span class="toc-text">如何使用抽象类和抽象方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意事项"><span class="toc-number">5.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/04/%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2020-06-04T08:00:22.323Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/04/%E6%95%B0%E7%BB%84/">数组</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/04/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-06-04T06:06:16.617Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/04/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E3%80%81%E5%B0%81%E8%A3%85%E3%80%81%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">类与对象、构造方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -320,8 +429,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
