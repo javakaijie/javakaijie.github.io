@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://yoursite.com/2020/06/29/%E5%AD%97%E8%8A%82%E6%B5%81%E3%80%81%E5%AD%97%E7%AC%A6%E6%B5%81/1.png">
 <meta property="article:published_time" content="2020-06-29T04:10:44.443Z">
-<meta property="article:modified_time" content="2020-07-01T04:52:01.949Z">
+<meta property="article:modified_time" content="2020-07-01T04:59:02.840Z">
 <meta property="article:author" content="JavaLearner">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/06/29/%E5%AD%97%E8%8A%82%E6%B5%81%E3%80%81%E5%AD%97%E7%AC%A6%E6%B5%81/1.png">
@@ -415,15 +415,10 @@
 <li><p><code>public void load(InputStream inStream)</code>： 字节输入流,不能读取含有中文的键值对 </p>
 </li>
 <li><p><code>public void load(Reader reader)</code>： 字符输入流,能读取含有中文的键值对</p>
-<p>使用步骤:</p>
-<pre><code>    1.创建Properties集合对象
-    2.使用Properties集合对象中的方法load读取保存键值对的文件
-    3.遍历Properties集合
-注意:
-    1.存储键值对的文件中,键与值默认的连接符号可以使用=,空格(其他符号)
-    2.存储键值对的文件中,可以使用#进行注释,被注释的键值对不会再被读取
-    3.存储键值对的文件中,键与值默认都是字符串,不用再加引号</code></pre></li>
+</li>
 </ul>
+<p>使用步骤:</p>
+<p>​            1.创建Properties集合对象<br>​            2.使用Properties集合对象中的方法load读取保存键值对的文件<br>​            3.遍历Properties集合<br>​        注意:<br>​            1.存储键值对的文件中,键与值默认的连接符号可以使用=,空格(其他符号)<br>​            2.存储键值对的文件中,可以使用#进行注释,被注释的键值对不会再被读取<br>​            3.存储键值对的文件中,键与值默认都是字符串,不用再加引号</p>
 <p>加载代码演示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">         <span class="comment">//1.创建Properties集合对象</span></span><br><span class="line">        Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">//2.使用Properties集合对象中的方法load读取保存键值对的文件</span></span><br><span class="line">        prop.load(<span class="keyword">new</span> FileReader(<span class="string">"09_IOAndProperties\\prop.txt"</span>));</span><br><span class="line">        <span class="comment">//prop.load(new FileInputStream("09_IOAndProperties\\prop.txt"));</span></span><br><span class="line">        <span class="comment">//3.遍历Properties集合</span></span><br><span class="line">        Set&lt;String&gt; set = prop.stringPropertyNames();</span><br><span class="line">        <span class="keyword">for</span> (String key : set) &#123;</span><br><span class="line">            String value = prop.getProperty(key);</span><br><span class="line">            System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -434,11 +429,10 @@
 <li><p><code>public void store(OutputStream out, String comments)</code>： 字节输出流,不能写入中文</p>
 </li>
 <li><p><code>public void store(Writer writer, String comments)</code>： 字符输出流,可以写中文</p>
-<p><code>String comments</code>:注释,用来解释说明保存的文件是做什么用的</p>
-<pre><code>不能使用中文,会产生乱码,默认是Unicode编码
-一般使用&quot;&quot;空字符串</code></pre><p>​        使用步骤:<br>​            1.创建Properties集合对象,添加数据<br>​            2.创建字节输出流/字符输出流对象,构造方法中绑定要输出的目的地<br>​            3.使用Properties集合中的方法store,把集合中的临时数据,持久化写入到硬盘中存储<br>​            4.释放资源</p>
+<p><code>String comments</code>:注释,用来解释说明保存的文件是做什么用的,不能使用中文,会产生乱码,默认是Unicode编码一般使用””空字符串</p>
 </li>
 </ul>
+<p>使用步骤:<br>        1.创建Properties集合对象,添加数据<br>        2.创建字节输出流/字符输出流对象,构造方法中绑定要输出的目的地<br>        3.使用Properties集合中的方法store,把集合中的临时数据,持久化写入到硬盘中存储<br>        4.释放资源</p>
 <p>加载代码演示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">          <span class="comment">//1.创建Properties集合对象,添加数据</span></span><br><span class="line">        Properties prop = <span class="keyword">new</span> Properties();</span><br><span class="line">        prop.setProperty(<span class="string">"赵丽颖"</span>,<span class="string">"168"</span>);</span><br><span class="line">        prop.setProperty(<span class="string">"迪丽热巴"</span>,<span class="string">"165"</span>);</span><br><span class="line">        prop.setProperty(<span class="string">"古力娜扎"</span>,<span class="string">"160"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.创建字节输出流/字符输出流对象,构造方法中绑定要输出的目的地</span></span><br><span class="line">        <span class="comment">//FileWriter fw = new FileWriter("09_IOAndProperties\\prop.txt");</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.使用Properties集合中的方法store,把集合中的临时数据,持久化写入到硬盘中存储</span></span><br><span class="line">        <span class="comment">//prop.store(fw,"save data");</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.释放资源</span></span><br><span class="line">        <span class="comment">//fw.close();</span></span><br><span class="line"></span><br><span class="line">        prop.store(<span class="keyword">new</span> FileOutputStream(<span class="string">"09_IOAndProperties\\prop2.txt"</span>),<span class="string">""</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
