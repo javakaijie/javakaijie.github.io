@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>SpringBoot13：异步、定时、邮件任务 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初学者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="SpringBoot13：异步、定时、邮件任务前言  在我们的工作中，常常会用到异步处理任务，比如我们在网站上发送邮件，后台会去发送邮件，此时前台会造成响应不动，直到邮件发送完毕，响应才会成功，所以我们一般会采用多线程的方式去处理这些任务。还有一些定时任务，比如需要在每天凌晨的时候，分析一次前一天的日志信息。还有就是邮件的发送，微信的前身也是邮件服务呢？这些东西都是怎么实现的呢？其实SpringB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot13：异步、定时、邮件任务">
+<meta property="og:url" content="http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="初学者">
+<meta property="og:description" content="SpringBoot13：异步、定时、邮件任务前言  在我们的工作中，常常会用到异步处理任务，比如我们在网站上发送邮件，后台会去发送邮件，此时前台会造成响应不动，直到邮件发送完毕，响应才会成功，所以我们一般会采用多线程的方式去处理这些任务。还有一些定时任务，比如需要在每天凌晨的时候，分析一次前一天的日志信息。还有就是邮件的发送，微信的前身也是邮件服务呢？这些东西都是怎么实现的呢？其实SpringB">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598427199814.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598427212683.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598407489716.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598407506035.png">
+<meta property="article:published_time" content="2020-08-26T02:16:17.248Z">
+<meta property="article:modified_time" content="2020-08-26T07:38:07.755Z">
 <meta property="article:author" content="JavaLearner">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598427199814.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -136,22 +143,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SpringBoot03：yaml配置注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-SpringBoot13：异步、定时、邮件任务" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/31/SpringBoot03%EF%BC%9Ayaml%E9%85%8D%E7%BD%AE%E6%B3%A8%E5%85%A5/">SpringBoot03：yaml配置注入</a>
+    <h1 class="article-title" itemprop="name">
+      SpringBoot13：异步、定时、邮件任务
     </h1>
   
 
         
-        <a href="/2020/07/31/SpringBoot03%EF%BC%9Ayaml%E9%85%8D%E7%BD%AE%E6%B3%A8%E5%85%A5/" class="archive-article-date">
-  	<time datetime="2020-07-30T17:43:49.050Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
+        <a href="/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2020-08-26T02:16:17.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
 </a>
         
       </header>
@@ -161,41 +166,186 @@
 	<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <p>SpringBoot–SpringBoot03：yaml配置注入</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/07/31/SpringBoot03%EF%BC%9Ayaml%E9%85%8D%E7%BD%AE%E6%B3%A8%E5%85%A5/#more">more >></a>
-        
+        <h2 id="SpringBoot13：异步、定时、邮件任务"><a href="#SpringBoot13：异步、定时、邮件任务" class="headerlink" title="SpringBoot13：异步、定时、邮件任务"></a>SpringBoot13：异步、定时、邮件任务</h2><p>前言</p>
+<blockquote>
+<p>在我们的工作中，常常会用到异步处理任务，比如我们在网站上发送邮件，后台会去发送邮件，此时前台会造成响应不动，直到邮件发送完毕，响应才会成功，所以我们一般会采用多线程的方式去处理这些任务。还有一些定时任务，比如需要在每天凌晨的时候，分析一次前一天的日志信息。还有就是邮件的发送，微信的前身也是邮件服务呢？这些东西都是怎么实现的呢？其实SpringBoot都给我们提供了对应的支持，我们上手使用十分的简单，只需要开启一些注解支持，配置一些配置文件即可！那我们来看看吧~  </p>
+</blockquote>
+<h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>1、创建一个service包</p>
+<p>2、创建一个类AsyncService</p>
+<p>异步处理还是非常常用的，比如我们在网站上发送邮件，后台会去发送邮件，此时前台会造成响应不动，直到邮件发送完毕，响应才会成功，所以我们一般会采用多线程的方式去处理这些任务。</p>
+<p>编写方法，假装正在处理数据，使用线程设置一些延时，模拟同步等待的情况；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">       System.out.println(<span class="string">"业务进行中...."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、编写controller包</p>
+<p>4、编写AsyncController类</p>
+<p>我们去写一个Controller测试一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   AsyncService asyncService;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">       asyncService.hello();</span><br><span class="line">       <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、访问<a href="http://localhost:8080/hello进行测试，3秒后出现success，这是同步等待的情况。" target="_blank" rel="noopener">http://localhost:8080/hello进行测试，3秒后出现success，这是同步等待的情况。</a></p>
+<p>问题：我们如果想让用户直接得到消息，就在后台使用多线程的方式进行处理即可，但是每次都需要自己手动去编写多线程的实现的话，太麻烦了，我们只需要用一个简单的办法，在我们的方法上加一个简单的注解即可，如下：</p>
+<p>6、给hello方法添加@Async注解；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//告诉Spring这是一个异步方法</span></span><br><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">       e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">   System.out.println(<span class="string">"业务进行中...."</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SpringBoot就会自己开一个线程池，进行调用！但是要让这个注解生效，我们还需要在主程序上添加一个注解@EnableAsync ，开启异步注解功能；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableAsync</span> <span class="comment">//开启异步注解功能</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootTaskApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       SpringApplication.run(SpringbootTaskApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7、重启测试，网页瞬间响应，后台代码依旧执行！</p>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>项目开发中经常需要执行一些定时任务，比如需要在每天凌晨的时候，分析一次前一天的日志信息，Spring为我们提供了异步执行任务调度的方式，提供了两个接口。</p>
+<ul>
+<li>TaskExecutor接口</li>
+<li>TaskScheduler接口</li>
+</ul>
+<p>两个注解：</p>
+<ul>
+<li>@EnableScheduling</li>
+<li>@Scheduled</li>
+</ul>
+<p><strong>cron表达式：</strong></p>
+<p><img src="/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598427199814.png" alt="1598427199814"></p>
+<p><img src="/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598427212683.png" alt="1598427212683"></p>
+<p><strong>测试步骤：</strong></p>
+<p>1、创建一个ScheduledService</p>
+<p>我们里面存在一个hello方法，他需要定时执行，怎么处理呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduledService</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//秒   分   时     日   月   周几</span></span><br><span class="line">   <span class="comment">//0 * * * * MON-FRI</span></span><br><span class="line">   <span class="comment">//注意cron表达式的用法；</span></span><br><span class="line">   <span class="meta">@Scheduled</span>(cron = <span class="string">"0 * * * * 0-7"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">       System.out.println(<span class="string">"hello....."</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、这里写完定时任务之后，我们需要在主程序上增加@EnableScheduling 开启定时任务功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableAsync</span> <span class="comment">//开启异步注解功能</span></span><br><span class="line"><span class="meta">@EnableScheduling</span> <span class="comment">//开启基于注解的定时任务</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringbootTaskApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       SpringApplication.run(SpringbootTaskApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、我们来详细了解下cron表达式；</p>
+<p><a href="http://www.bejson.com/othertools/cron/" target="_blank" rel="noopener">http://www.bejson.com/othertools/cron/</a></p>
+<p>4、常用的表达式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">（<span class="number">1</span>）<span class="number">0</span>/<span class="number">2</span> * * * * ?   表示每<span class="number">2</span>秒 执行任务</span><br><span class="line">（<span class="number">1</span>）<span class="number">0</span> <span class="number">0</span>/<span class="number">2</span> * * * ?   表示每<span class="number">2</span>分钟 执行任务</span><br><span class="line">（<span class="number">1</span>）<span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> * ?   表示在每月的<span class="number">1</span>日的凌晨<span class="number">2</span>点调整任务</span><br><span class="line">（<span class="number">2</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> ? * MON-FRI   表示周一到周五每天上午<span class="number">10</span>:<span class="number">15</span>执行作业</span><br><span class="line">（<span class="number">3</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> ? <span class="number">6L</span> <span class="number">2002</span>-<span class="number">2006</span>   表示<span class="number">2002</span>-<span class="number">2006</span>年的每个月的最后一个星期五上午<span class="number">10</span>:<span class="number">15</span>执行作</span><br><span class="line">（<span class="number">4</span>）<span class="number">0</span> <span class="number">0</span> <span class="number">10</span>,<span class="number">14</span>,<span class="number">16</span> * * ?   每天上午<span class="number">10</span>点，下午<span class="number">2</span>点，<span class="number">4</span>点</span><br><span class="line">（<span class="number">5</span>）<span class="number">0</span> <span class="number">0</span>/<span class="number">30</span> <span class="number">9</span>-<span class="number">17</span> * * ?   朝九晚五工作时间内每半小时</span><br><span class="line">（<span class="number">6</span>）<span class="number">0</span> <span class="number">0</span> <span class="number">12</span> ? * WED   表示每个星期三中午<span class="number">12</span>点</span><br><span class="line">（<span class="number">7</span>）<span class="number">0</span> <span class="number">0</span> <span class="number">12</span> * * ?   每天中午<span class="number">12</span>点触发</span><br><span class="line">（<span class="number">8</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> ? * *   每天上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">9</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> * * ?     每天上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">10</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> * * ?   每天上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">11</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> * * ? <span class="number">2005</span>   <span class="number">2005</span>年的每天上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">12</span>）<span class="number">0</span> * <span class="number">14</span> * * ?     在每天下午<span class="number">2</span>点到下午<span class="number">2</span>:<span class="number">59</span>期间的每<span class="number">1</span>分钟触发</span><br><span class="line">（<span class="number">13</span>）<span class="number">0</span> <span class="number">0</span>/<span class="number">5</span> <span class="number">14</span> * * ?   在每天下午<span class="number">2</span>点到下午<span class="number">2</span>:<span class="number">55</span>期间的每<span class="number">5</span>分钟触发</span><br><span class="line">（<span class="number">14</span>）<span class="number">0</span> <span class="number">0</span>/<span class="number">5</span> <span class="number">14</span>,<span class="number">18</span> * * ?     在每天下午<span class="number">2</span>点到<span class="number">2</span>:<span class="number">55</span>期间和下午<span class="number">6</span>点到<span class="number">6</span>:<span class="number">55</span>期间的每<span class="number">5</span>分钟触发</span><br><span class="line">（<span class="number">15</span>）<span class="number">0</span> <span class="number">0</span>-<span class="number">5</span> <span class="number">14</span> * * ?   在每天下午<span class="number">2</span>点到下午<span class="number">2</span>:<span class="number">05</span>期间的每<span class="number">1</span>分钟触发</span><br><span class="line">（<span class="number">16</span>）<span class="number">0</span> <span class="number">10</span>,<span class="number">44</span> <span class="number">14</span> ? <span class="number">3</span> WED   每年三月的星期三的下午<span class="number">2</span>:<span class="number">10</span>和<span class="number">2</span>:<span class="number">44</span>触发</span><br><span class="line">（<span class="number">17</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> ? * MON-FRI   周一至周五的上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">18</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> <span class="number">15</span> * ?   每月<span class="number">15</span>日上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">19</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> L * ?   每月最后一日的上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">20</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> ? * <span class="number">6L</span>   每月的最后一个星期五上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（<span class="number">21</span>）<span class="number">0</span> <span class="number">15</span> <span class="number">10</span> ? * <span class="number">6L</span> <span class="number">2002</span>-<span class="number">2005</span>   <span class="number">2002</span>年至<span class="number">2005</span>年的每月的最后一个星期五上午<span class="number">10</span>:<span class="number">15</span>触发</span><br><span class="line">（22）0 15 10 ? * 6#3   每月的第三个星期五上午10:15触发</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="邮件任务"><a href="#邮件任务" class="headerlink" title="邮件任务"></a>邮件任务</h2><p>邮件发送，在我们的日常开发中，也非常的多，Springboot也帮我们做了支持</p>
+<ul>
+<li>邮件发送需要引入spring-boot-start-mail</li>
+<li>SpringBoot 自动配置MailSenderAutoConfiguration</li>
+<li>定义MailProperties内容，配置在application.yml中</li>
+<li>自动装配JavaMailSender</li>
+<li>测试邮件发送</li>
+</ul>
+<p><strong>测试：</strong></p>
+<p>1、引入pom依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;spring-boot-starter-mail&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>看它引入的依赖，可以看到 jakarta.mail</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;com.sun.mail&lt;&#x2F;groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;jakarta.mail&lt;&#x2F;artifactId&gt;</span><br><span class="line">   &lt;version&gt;1.6.4&lt;&#x2F;version&gt;</span><br><span class="line">   &lt;scope&gt;compile&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、查看自动配置类：MailSenderAutoConfiguration</p>
+<p><img src="/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598407489716.png" alt="1598407489716"></p>
+<p>这个类中存在bean，JavaMailSenderImpl</p>
+<p><img src="/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/1598407506035.png" alt="1598407506035"></p>
+<p>然后我们去看下配置文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(</span><br><span class="line">   prefix = <span class="string">"spring.mail"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MailProperties</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Charset DEFAULT_CHARSET;</span><br><span class="line">   <span class="keyword">private</span> String host;</span><br><span class="line">   <span class="keyword">private</span> Integer port;</span><br><span class="line">   <span class="keyword">private</span> String username;</span><br><span class="line">   <span class="keyword">private</span> String password;</span><br><span class="line">   <span class="keyword">private</span> String protocol = <span class="string">"smtp"</span>;</span><br><span class="line">   <span class="keyword">private</span> Charset defaultEncoding;</span><br><span class="line">   <span class="keyword">private</span> Map&lt;String, String&gt; properties;</span><br><span class="line">   <span class="keyword">private</span> String jndiName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、配置文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">mail:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="number">1635629807</span><span class="string">@qq.com</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">smtp.qq.com</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">boglleydwoevfcaf</span></span><br></pre></td></tr></table></figure>
+
+<p>获取授权码：在QQ邮箱中的设置-&gt;账户-&gt;开启pop3和smtp服务</p>
+<p>4、Spring单元测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kj.springboottest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.mail.SimpleMailMessage;</span><br><span class="line"><span class="keyword">import</span> org.springframework.mail.javamail.JavaMailSenderImpl;</span><br><span class="line"><span class="keyword">import</span> org.springframework.mail.javamail.MimeMessageHelper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.mail.MessagingException;</span><br><span class="line"><span class="keyword">import</span> javax.mail.internet.MimeMessage;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpringbootTestApplicationTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JavaMailSenderImpl mailSender;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextLoads</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//邮件设置1：一个简单的邮件</span></span><br><span class="line">        SimpleMailMessage message = <span class="keyword">new</span> SimpleMailMessage();</span><br><span class="line">        message.setSubject(<span class="string">"通知-明天来狂神这听课"</span>);</span><br><span class="line">        message.setText(<span class="string">"今晚7:30开会"</span>);</span><br><span class="line"></span><br><span class="line">        message.setTo(<span class="string">"1635629807@qq.com"</span>);</span><br><span class="line">        message.setFrom(<span class="string">"1635629807@qq.com"</span>);</span><br><span class="line">        mailSender.send(message);</span><br><span class="line">        System.out.println(<span class="string">"ok1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextLoads2</span><span class="params">()</span> <span class="keyword">throws</span>  MessagingException </span>&#123;</span><br><span class="line">        <span class="comment">//邮件设置2：一个复杂的邮件</span></span><br><span class="line">        MimeMessage mimeMessage = mailSender.createMimeMessage();</span><br><span class="line">        MimeMessageHelper helper = <span class="keyword">new</span> MimeMessageHelper(mimeMessage, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        helper.setSubject(<span class="string">"通知-明天来狂神这听课"</span>);</span><br><span class="line">        helper.setText(<span class="string">"&lt;b style='color:red'&gt;今天 7:30来开会&lt;/b&gt;"</span>,<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//发送附件</span></span><br><span class="line"><span class="comment">//        helper.addAttachment("1.jpg",new File(""));</span></span><br><span class="line"><span class="comment">//        helper.addAttachment("2.jpg",new File(""));</span></span><br><span class="line"></span><br><span class="line">        helper.setTo(<span class="string">"1635629807@qq.com"</span>);</span><br><span class="line">        helper.setFrom(<span class="string">"1635629807@qq.com"</span>);</span><br><span class="line"></span><br><span class="line">        mailSender.send(mimeMessage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/31/SpringBoot03%EF%BC%9Ayaml%E9%85%8D%E7%BD%AE%E6%B3%A8%E5%85%A5/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/26/SpringBoot13%EF%BC%9A%E5%BC%82%E6%AD%A5%E3%80%81%E5%AE%9A%E6%97%B6%E3%80%81%E9%82%AE%E4%BB%B6%E4%BB%BB%E5%8A%A1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/25/SpringBoot12%EF%BC%9A%E6%95%B4%E5%90%88Shiro/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot12：整合Shiro</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -215,723 +365,14 @@
 
 
 
-
-  
-    <article id="post-SpringBoot02 运行原理初探" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/31/SpringBoot02%20%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/">SpringBoot02：运行原理初探</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/31/SpringBoot02%20%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/" class="archive-article-date">
-  	<time datetime="2020-07-30T16:24:55.198Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SpringBoot–SpringBoot02：运行原理初探</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/07/31/SpringBoot02%20%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/31/SpringBoot02%20%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SpringBoot01：Hello,World！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/30/SpringBoot01%EF%BC%9AHello,World%EF%BC%81/">SpringBoot01：第一个程序</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/30/SpringBoot01%EF%BC%9AHello,World%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-07-30T03:05:10.988Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SpringBoot–SpringBoot01：第一个程序</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/07/30/SpringBoot01%EF%BC%9AHello,World%EF%BC%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SpringBoot//" class="article-tag-list-link color1">SpringBoot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/30/SpringBoot01%EF%BC%9AHello,World%EF%BC%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ssm整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/ssm%E6%95%B4%E5%90%88/">ssm整合</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/29/ssm%E6%95%B4%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-07-29T07:30:34.197Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ssm–ssm整合</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/07/29/ssm%E6%95%B4%E5%90%88/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ssm//" class="article-tag-list-link color4">ssm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/29/ssm%E6%95%B4%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/%E5%8F%8D%E5%B0%84/">反射</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/27/%E5%8F%8D%E5%B0%84/" class="archive-article-date">
-  	<time datetime="2020-07-27T05:33:28.835Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java基础–反射</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/07/27/%E5%8F%8D%E5%B0%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/%E5%8F%8D%E5%B0%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-缓冲流序列化打印流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/%E7%BC%93%E5%86%B2%E6%B5%81%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%93%E5%8D%B0%E6%B5%81/">缓冲流、序列化、打印流</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/%E7%BC%93%E5%86%B2%E6%B5%81%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%93%E5%8D%B0%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2020-07-22T06:33:15.251Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java基础–缓冲流、序列化、打印流</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/07/22/%E7%BC%93%E5%86%B2%E6%B5%81%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%93%E5%8D%B0%E6%B5%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/22/%E7%BC%93%E5%86%B2%E6%B5%81%E5%BA%8F%E5%88%97%E5%8C%96%E6%89%93%E5%8D%B0%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-File类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/30/File%E7%B1%BB/">File类与IO流--File类</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/30/File%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2020-06-30T01:38:56.302Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java基础–File类</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/06/30/File%E7%B1%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/30/File%E7%B1%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-字节流、字符流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/%E5%AD%97%E8%8A%82%E6%B5%81%E3%80%81%E5%AD%97%E7%AC%A6%E6%B5%81/">File类与IO流--字节流、字符流</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/29/%E5%AD%97%E8%8A%82%E6%B5%81%E3%80%81%E5%AD%97%E7%AC%A6%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2020-06-29T04:10:44.443Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java基础–字节流、字符流</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/06/29/%E5%AD%97%E8%8A%82%E6%B5%81%E3%80%81%E5%AD%97%E7%AC%A6%E6%B5%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/29/%E5%AD%97%E8%8A%82%E6%B5%81%E3%80%81%E5%AD%97%E7%AC%A6%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Lambda表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Lambda表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/28/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-06-28T13:40:01.372Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java基础–Lambda表达式</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/06/28/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/28/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-06-28T04:42:11.194Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
-</a>
-        
-      </header>
-    
-	<!-- 目录内容 -->
-	
-	<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java基础–多线程</p>
-        
-          <a class="article-more-a" style="display: none;"  href="/2020/06/28/%E5%A4%9A%E7%BA%BF%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java基础//" class="article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/28/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -954,8 +395,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
